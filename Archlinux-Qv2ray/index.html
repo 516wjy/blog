@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Archlinux QV2ray 实现科学上网 | 516Wjy-Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://516wjy.github.io/blog/favicon.ico?v=1593260829040">
+<link rel="stylesheet" href="https://516wjy.github.io/blog/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1. 准备
+
+有一套机场订阅，并且包含V2ray。
+有一台装好的 ArchLinux， Manjaro 也行
+
+2. 配置 Pacman Archlinuxcn
+在 /etc/pacman.conf 的末尾添加这几行代码
+[archlinu..." />
+    <meta name="keywords" content="科学上网" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://516wjy.github.io/blog">
+        <img src="https://516wjy.github.io/blog/images/avatar.png?v=1593260829040" class="site-logo">
+        <h1 class="site-title">516Wjy-Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/blog" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/blog/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/blog/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/516wjy" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://www.zhihu.com/people/wjy-96-23" target="_blank">
+            <i class="fab fa-zhihu"></i>
+          </a>
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      516Wjy Blog
+    </div>
+    <div class="site-footer">
+      由 <a href="http://victorwoo.synology.me:666" target="_blank"> 5+1 </a> &bull; <a href="https://langong-dev.github.io" target="_blank"> LanGong </a> 特别推出 | <a class="rss" href="https://516wjy.github.io/blog/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Archlinux QV2ray 实现科学上网</h2>
+            <div class="post-date">2020-06-27</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="1-准备">1. 准备</h1>
+<ul>
+<li>有一套机场订阅，并且包含V2ray。</li>
+<li>有一台装好的 ArchLinux， Manjaro 也行</li>
+</ul>
+<h1 id="2-配置-pacman-archlinuxcn">2. 配置 Pacman Archlinuxcn</h1>
+<p>在 <code>/etc/pacman.conf</code> 的末尾添加这几行代码</p>
+<pre><code class="language-bash">[archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre>
+<p>导入 GDP-key</p>
+<pre><code class="language-bash">sudo pacman -Syy
+sudo pacman -S archlinuxcn-keyring
+</code></pre>
+<h1 id="3-安装-qv2ray">3. 安装 Qv2ray</h1>
+<pre><code class="language-bash">sudo pacman -S qv2ray
+</code></pre>
+<h1 id="4-下载-v2ray-core">4. 下载 V2ray-core</h1>
+<ol>
+<li>在浏览器中访问 <code>https://github.com/v2ray/v2ray-core/releases</code> 并下载 <code>v2ray-linux-64.zip</code></li>
+<li>解压到 <code>~/</code> 下并重命名为 <code>.v2ray</code></li>
+</ol>
+<h1 id="5-配置-qv2ray">5. 配置 Qv2ray</h1>
+<ol>
+<li>打开 Qv2ray 并选择 <code>首选项</code> 找到 <code>内核</code> 并把 <code>核心可执行文件路径</code> 改为 <code>那个文件夹路径/v2ray</code> ，把 <code>V2ray资源目录</code> 改成 <code>那个文件夹路径</code> （文件夹路径应该是 <code>/home/用户名/.v2ray</code> ）</li>
+<li>回到 <code>常规设置</code> ，把 <code>Qv2ray代理</code> 改成 <code>使用系统代理</code></li>
+<li>退出 <code>首选项</code>，进入 <code>订阅</code>， 添加订阅地址，并点击 <code>更新订阅数据</code></li>
+<li>进入 <code>首选项</code> ，找到 <code>自动连接分组</code> 选为你的分组，把 <code>配置</code> 选为你想要的线路</li>
+</ol>
+<h1 id="写在最后的话">写在最后的话</h1>
+<p>祝大家都能实现科学上网！</p>
+<p>感谢 <a href="https://github.com/Arch-Jasom">@Arch-Jason</a> 的帮助！</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://516wjy.github.io/blog/Kexue-Internet/" class="tag">
+                    科学上网
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dfc257046874e4461f6f',
+        clientSecret: '06869916f1bbc829b79ebaeefdbf1ceda8570a80',
+        repo: 'blog',
+        owner: '516wjy',
+        admin: ['516wjy'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
