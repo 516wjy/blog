@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://516wjy.github.io/blog</id>
     <title>516Wjy-Blog</title>
-    <updated>2020-06-27T12:27:12.181Z</updated>
+    <updated>2020-06-27T13:21:05.588Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://516wjy.github.io/blog"/>
     <link rel="self" href="https://516wjy.github.io/blog/atom.xml"/>
@@ -16,5 +16,12 @@
         <link href="https://516wjy.github.io/blog/Archlinux-Qv2ray/">
         </link>
         <updated>2020-06-27T09:07:33.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[安装 Archlinux]]></title>
+        <id>https://516wjy.github.io/blog/Install-Archlinux/</id>
+        <link href="https://516wjy.github.io/blog/Install-Archlinux/">
+        </link>
+        <updated>2020-06-19T13:19:54.000Z</updated>
     </entry>
 </feed>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Archlinux QV2ray 实现科学上网 | 516Wjy-Blog</title>
+<title>安装 Archlinux | 516Wjy-Blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,15 +24,14 @@
 
 
 
-    <meta name="description" content="1. 准备
+    <meta name="description" content="安装Arch
+最好结合这篇文章(Arch Wiki官方文档)
+注：我的电脑比较老，是BIOS
+准备
 
-有一套机场订阅，并且包含V2ray。
-有一台装好的 ArchLinux， Manjaro 也行
-
-2. 配置 Pacman Archlinuxcn
-在 /etc/pacman.conf 的末尾添加这几行代码
-[archlinu..." />
-    <meta name="keywords" content="科学上网" />
+现在一台Linux上下载最新的Arch镜像，地址是这个，找到中国的，随便那个都行。
+用dd命令把它装到一个空闲的u盘（这个u盘将会被格式化..." />
+    <meta name="keywords" content="Arch" />
   </head>
   <body>
     <div id="app" class="main">
@@ -105,67 +104,129 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Archlinux QV2ray 实现科学上网</h2>
-            <div class="post-date">2020-06-27</div>
+            <h2 class="post-title">安装 Archlinux</h2>
+            <div class="post-date">2020-06-19</div>
             
             <div class="post-content" v-pre>
-              <h1 id="1-准备">1. 准备</h1>
-<ul>
-<li>有一套机场订阅，并且包含V2ray。</li>
-<li>有一台装好的 ArchLinux， Manjaro 也行</li>
-</ul>
-<h1 id="2-配置-pacman-archlinuxcn">2. 配置 Pacman Archlinuxcn</h1>
-<p>在 <code>/etc/pacman.conf</code> 的末尾添加这几行代码</p>
-<pre><code class="language-bash">[archlinuxcn]
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code></pre>
-<p>导入 GDP-key</p>
-<pre><code class="language-bash">sudo pacman -Syy
-sudo pacman -S archlinuxcn-keyring
-</code></pre>
-<h1 id="3-安装-qv2ray">3. 安装 Qv2ray</h1>
-<pre><code class="language-bash">sudo pacman -S qv2ray
-</code></pre>
-<h1 id="4-下载-v2ray-core">4. 下载 V2ray-core</h1>
+              <h1 id="安装arch">安装Arch</h1>
+<p>最好结合<a href="https://wiki.archlinux.org/index.php/Installation_guide">这篇文章(Arch Wiki官方文档)</a></p>
+<p>注：我的电脑比较老，是BIOS</p>
+<h2 id="准备">准备</h2>
 <ol>
-<li>在浏览器中访问 <code>https://github.com/v2ray/v2ray-core/releases</code> 并下载 <code>v2ray-linux-64.zip</code></li>
-<li>解压到 <code>~/</code> 下并重命名为 <code>.v2ray</code></li>
+<li>现在一台Linux上下载最新的Arch镜像，<a href="https://archlinux.org/download">地址是这个</a>，找到中国的，随便那个都行。</li>
+<li>用<code>dd</code>命令把它装到一个空闲的u盘（这个u盘将会被格式化）命令：<code>(root) dd if=&lt;ARCH-ISO.iso&gt; of=/dev/sdX</code></li>
+<li>重启电脑，注意要用刚刚的U盘启动</li>
+<li>进入Arch-ISO后先联网，具体方法ArchWiki</li>
+<li>正文开始</li>
 </ol>
-<h1 id="5-配置-qv2ray">5. 配置 Qv2ray</h1>
+<h2 id="正文">正文</h2>
+<h3 id="0-初始化arch-iso">0. 初始化Arch-ISO</h3>
+<pre><code class="language-bash">pacman -Sy
+</code></pre>
+<h3 id="1-分区挂载">1. 分区挂载</h3>
 <ol>
-<li>打开 Qv2ray 并选择 <code>首选项</code> 找到 <code>内核</code> 并把 <code>核心可执行文件路径</code> 改为 <code>那个文件夹路径/v2ray</code> ，把 <code>V2ray资源目录</code> 改成 <code>那个文件夹路径</code> （文件夹路径应该是 <code>/home/用户名/.v2ray</code> ）</li>
-<li>回到 <code>常规设置</code> ，把 <code>Qv2ray代理</code> 改成 <code>使用系统代理</code></li>
-<li>退出 <code>首选项</code>，进入 <code>订阅</code>， 添加订阅地址，并点击 <code>更新订阅数据</code></li>
-<li>进入 <code>首选项</code> ，找到 <code>自动连接分组</code> 选为你的分组，把 <code>配置</code> 选为你想要的线路</li>
+<li>格式化硬盘为MBR</li>
 </ol>
-<h1 id="写在最后的话">写在最后的话</h1>
-<p>祝大家都能实现科学上网！</p>
-<p>感谢 <a href="https://github.com/Arch-Jasom">@Arch-Jason</a> 的帮助！</p>
-<h1 id="写在最后的最后的话-附注">写在最后的最后的话 （附注）</h1>
+<pre><code class="language-bash">parted /dev/sdX
+# 会进入PARTED，并且有像(parted)这样的提示
+mktable
+# 然后会问你格式是啥
+  msdos
+# 并且yes
+  yes
+# 退出
+quit
+</code></pre>
+<ol start="2">
+<li>分区</li>
+</ol>
+<pre><code class="language-bash">cfdisk /dev/sdX
+# 然后先Delete，再new，
+</code></pre>
+<p>建议分区:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">地址</th>
+<th style="text-align:center">空间</th>
+<th style="text-align:center">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/dev/sdX1</td>
+<td style="text-align:center">总大小-4GB</td>
+<td style="text-align:center">根目录分区</td>
+</tr>
+<tr>
+<td style="text-align:center">/dev/sdX2</td>
+<td style="text-align:center">4GB</td>
+<td style="text-align:center">Swap交换分区</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>格式化</li>
+</ol>
+<pre><code class="language-bash">mkfs.ext4 /dev/sdX1
+mkswap /dev/sdX2
+swapon /dev/sdX2
+</code></pre>
+<ol start="4">
+<li>挂载</li>
+</ol>
+<pre><code class="language-bash">mount /dev/sdX1 /mnt
+</code></pre>
+<h3 id="2-安装基本系统">2. 安装基本系统</h3>
 <ol>
-<li>Qv2ray的线路切换很麻烦，需要进入首选项切换 （ssr的客户端到现在为止我还没有找到合适的，所以我推荐还是用V2ray）2020 06 27</li>
-<li>archlinux参考文献 <a href="https://wiki.archlinux.org">Archlinux Wiki</a> 2020 06 27</li>
+<li>安装基本系统</li>
 </ol>
+<pre><code class="language-bash">pacstrap -i /mnt　base grub linux-lts vim grub
+</code></pre>
+<ol start="2">
+<li>安装fstb</li>
+</ol>
+<pre><code class="language-bash">genfstab -U /mnt  &gt;&gt; /mnt/etc/fstab　
+</code></pre>
+<ol start="3">
+<li>Chroot</li>
+</ol>
+<pre><code class="language-bash">arch-chroot /mnt
+</code></pre>
+<h3 id="3-配置">3. 配置</h3>
+<ol>
+<li>时区、语言</li>
+</ol>
+<pre><code class="language-bash">ln -svf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+vim /etc/locale.gen      ##将en_US.UTF-8 UTF-8前的＃号注释去掉
+locale-gen
+echo LANG=en_US.UTF-8&gt;/etc/locale.conf
+</code></pre>
+<ol start="2">
+<li>主机名、密码</li>
+</ol>
+<pre><code class="language-bash">echo 你的主机名&gt;/etc/hostname
+passwd #输入新的root密码
+</code></pre>
+<ol start="3">
+<li>引导</li>
+</ol>
+<pre><code class="language-bash">mkinitcpio -P
+grub-install --target=i386-pc /dev/sdX --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+<p>到此为止，Arch就装好了！</p>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://516wjy.github.io/blog/Kexue-Internet/" class="tag">
-                    科学上网
+                  <a href="https://516wjy.github.io/blog/v7qWLNr9j/" class="tag">
+                    Arch
                   </a>
                 
               </div>
             
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://516wjy.github.io/blog/Install-Archlinux/">
-                  <h3 class="post-title">
-                    安装 Archlinux
-                  </h3>
-                </a>
-              </div>
             
 
             
