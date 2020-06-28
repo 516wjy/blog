@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>洛谷 P5104 题解 | 5+1Wjy Blog</title>
+<title>Gridea Github 博客快速安装 | 5+1Wjy Blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,13 +24,13 @@
 
 
 
-    <meta name="description" content="首先我们来分析一下
-
-按照题意，就是w2k\frac{w}{2^k}2kw​对mod的取模。
-分数取模改为逆元取模，逆元可以用费马小定理计算。
-
-最终答案就是(w * fastPower(fastPower(2, k), mod - 2))..." />
-    <meta name="keywords" content="洛谷" />
+    <meta name="description" content="Gridea是一个很好用的博客创建、编写的平台
+Gridea支持Markdown语法和Katex公式渲染，你可以向世界展示你的博客。
+1. 准备
+准备好Gridea和Github账户
+注： 在这里，我将以Linux版的Gridea来示范。
+..." />
+    <meta name="keywords" content="Gridea" />
   </head>
   <body>
     <div id="app" class="main">
@@ -113,56 +113,71 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">洛谷 P5104 题解</h2>
-            <div class="post-date">2020-03-19</div>
+            <h2 class="post-title">Gridea Github 博客快速安装</h2>
+            <div class="post-date">2020-04-28</div>
             
             <div class="post-content" v-pre>
-              <h1 id="首先我们来分析一下">首先我们来分析一下</h1>
-<ul>
-<li>按照题意，就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mi>w</mi><msup><mn>2</mn><mi>k</mi></msup></mfrac></mrow><annotation encoding="application/x-tex">\frac{w}{2^k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0528119999999999em;vertical-align:-0.3574199999999999em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.64258em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7820285714285713em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3574199999999999em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>对mod的取模。</li>
-<li>分数取模改为逆元取模，逆元可以用费马小定理计算。</li>
-</ul>
-<p>最终答案就是<code>(w * fastPower(fastPower(2, k), mod - 2)) % m</code></p>
-<h1 id="所以-colorredcode">所以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mi>C</mi><mi>o</mi><mi>d</mi><mi>e</mi></mstyle></mrow><annotation encoding="application/x-tex">\color{red}Code</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;color:red;">C</span><span class="mord mathdefault" style="color:red;">o</span><span class="mord mathdefault" style="color:red;">d</span><span class="mord mathdefault" style="color:red;">e</span></span></span></span>:</h1>
-<pre><code class="language-cpp">namespace math{
-    typedef long long ll;
-    ll fastpow(ll x, ll y, ll mod){
-        ll r=1%mod,base=x%mod;
-        while(y){
-            if(y&amp;1){
-                r=r*base%mod;
-            }
-            base=base*base%mod,y&gt;&gt;=1;
-        }
-        return r%mod;
-    }
-    ll gcd(ll x,ll y){
-      return y?gcd(y,x%y):x;
-    }
-    int gcd(int x,int y){
-      return y?gcd(y,x%y):x;
-    }
-}
-#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-using namespace std;
-using namespace math;
-ll mod=1e9+7;
-int main(){
-  ll w,n,k;
-  scanf(&quot;%lld%lld%lld&quot;,&amp;w,&amp;n,&amp;k);
-  printf(&quot;%lld\n&quot;,(w*fastpow(fastpow(2,k,mod),mod-2,mod))%mod);
-  return 0;
-}
-</code></pre>
-<p>我用 namespace 写的，不必要效仿我。</p>
+              <h1 id="gridea是一个很好用的博客创建-编写的平台">Gridea是一个很好用的博客创建、编写的平台</h1>
+<p>Gridea支持<strong>Markdown</strong>语法和<strong>Katex</strong>公式渲染，你可以向世界展示你的博客。</p>
+<h1 id="1-准备">1. 准备</h1>
+<p>准备好Gridea和Github账户</p>
+<p>注： 在这里，我将以Linux版的Gridea来示范。</p>
+<h1 id="2-基本配置">2. 基本配置</h1>
+<p>点击Github首面右上角的<code>+</code>，选择new repository。</p>
+<p>Name填写<code>用户名.github.io</code><br>
+其它的只要选择Public即可</p>
+<p>进入<a href="https://github.com/settings/tokens">Github&gt;&gt;Setting&gt;&gt;Developer settings&gt;&gt;Personal access tokens</a>并注册一个Token</p>
+<ol>
+<li>点击右侧的Generate new token</li>
+<li>在Note处填写你的blog名称</li>
+<li>勾选reop</li>
+<li>点击绿色的创建按钮</li>
+</ol>
+<p>进入<a href="https://github.com/settings/developers">Github&gt;&gt;Setting&gt;&gt;Developer settings&gt;&gt;Oauth Apps</a></p>
+<ol>
+<li>创建一个新的Oauth App</li>
+<li>Application name 填写blog名称</li>
+<li>Homepage URL 填写blog地址即<code>用户名.github.io</code></li>
+<li>Application description 随意填写</li>
+<li>Authorization callback URL 填写blog地址</li>
+<li>将Client ID和Client Secret记录下来</li>
+</ol>
+<p>打开Gridea</p>
+<p>找到左侧的远程模块</p>
+<figure data-type="image" tabindex="1"><img src="http://victorwoo.synology.me:666/ImageCenter/gridea01.png" alt="Gridea Image 01" loading="lazy"></figure>
+<ol>
+<li>域名填写blog地址</li>
+<li>仓库名称填写<code>用户名.github.io</code></li>
+<li>仓库用户名就是你的用户名</li>
+<li>分支填写master即可</li>
+<li>邮箱就是你GitHub注册用的邮箱</li>
+<li>令牌填写Github的密码</li>
+<li>CNAME填写你的网址即可</li>
+</ol>
+<p>点击保存按钮</p>
+<p>再点击检测远程连接按钮</p>
+<h1 id="3-评论配置">3. 评论配置</h1>
+<p>进入Gridea&gt;&gt;远程&gt;&gt;评论。</p>
+<figure data-type="image" tabindex="2"><img src="http://victorwoo.synology.me:666/ImageCenter/gridea02.png" alt="Gridea Image 02" loading="lazy"></figure>
+<ol>
+<li>选择Gitalk</li>
+<li>填入所有信息</li>
+</ol>
+<p>点击保存按钮</p>
+<h1 id="4-上传">4. 上传</h1>
+<p>点击左侧的上传按钮</p>
+<p>等侯2分钟</p>
+<p>进入你的网页，就能看到了</p>
+<h1 id="底部信息">底部信息</h1>
+<p>由 LanGongINC 出品，禁止转载。<br>
+Made by LanGongINC, at 2020</p>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://516wjy.github.io/blog/Luogu/" class="tag">
-                    洛谷
+                  <a href="https://516wjy.github.io/blog/two811QPU/" class="tag">
+                    Gridea
                   </a>
                 
               </div>
@@ -170,9 +185,9 @@ int main(){
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://516wjy.github.io/blog/Luogu-P3601/">
+                <a href="https://516wjy.github.io/blog/Luogu-P5658/">
                   <h3 class="post-title">
-                    洛谷 P3601 题解
+                    洛谷 P5658 题解
                   </h3>
                 </a>
               </div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://516wjy.github.io/blog</id>
     <title>5+1Wjy Blog</title>
-    <updated>2020-06-28T01:38:16.571Z</updated>
+    <updated>2020-06-28T01:41:43.417Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://516wjy.github.io/blog"/>
     <link rel="self" href="https://516wjy.github.io/blog/atom.xml"/>
@@ -69,6 +69,13 @@
 <p>思路是不错的，可是脑子不够快！可能是当时有点仓促，结果 WA 咧！</p>
 <p>面对 WA 最有效的方法就是重写一遍！</p>
 ]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Gridea Github 博客快速安装]]></title>
+        <id>https://516wjy.github.io/blog/Gridea-Install/</id>
+        <link href="https://516wjy.github.io/blog/Gridea-Install/">
+        </link>
+        <updated>2020-04-28T01:40:50.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[洛谷 P5658 题解]]></title>
