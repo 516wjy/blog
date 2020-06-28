@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Arch | 5+1Wjy Blog</title>
+<title>洛谷 At163 题解 | 5+1Wjy Blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -12,13 +12,28 @@
 <link rel="stylesheet" href="https://516wjy.github.io/blog/styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
-    <meta name="description" content="">
+    <meta name="description" content="先来分析一下
+
+我们先读入当前字符串
+再反转当前字符串，然后将 nnn 个字符串按字典序排序
+最后再次翻转并输出即可。
+
+对于反转字符串，可以用reverse()轻松搞定。
+#include&lt;iostream&gt;
+#include..." />
+    <meta name="keywords" content="洛谷" />
   </head>
   <body>
     <div id="app" class="main">
@@ -100,53 +115,70 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: Arch</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Archlinux-Qv2ray/">
-                  <h2 class="post-title">Archlinux QV2ray 实现科学上网</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-27
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-                <a class="right" href="https://516wjy.github.io/blog/Archlinux-Qv2ray/">
-                  <div class="feature-container" style="background-image: url('https://516wjy.github.io/blog/post-images/Archlinux-Qv2ray.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Install-Archlinux/">
-                  <h2 class="post-title">安装 Archlinux</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-                <a class="right" href="https://516wjy.github.io/blog/Install-Archlinux/">
-                  <div class="feature-container" style="background-image: url('https://516wjy.github.io/blog/post-images/Install-Archlinux.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">洛谷 At163 题解</h2>
+            <div class="post-date">2020-03-24</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="先来分析一下">先来分析一下</h1>
+<ol>
+<li>我们先读入当前字符串</li>
+<li>再反转当前字符串，然后将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个字符串按字典序排序</li>
+<li>最后再次翻转并输出即可。</li>
+</ol>
+<p>对于反转字符串，可以用<code>reverse()</code>轻松搞定。</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main(){
+    int n;
+    cin&gt;&gt;n;
+    string a[105];
+    for(int i=0;i&lt;n;i++){
+        cin&gt;&gt;a[i];
+        reverse(a[i].begin(),a[i].end());
+    }
+    sort(a,a+n);
+    for(int i=0;i&lt;n;i++){
+        reverse(a[i].begin(),a[i].end());
+        cout&lt;&lt;a[i]&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://516wjy.github.io/blog/Luogu/" class="tag">
+                    洛谷
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://516wjy.github.io/blog/Luogu-UVA10820/">
+                  <h3 class="post-title">
+                    洛谷 UVA10820 题解
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
 
         </div>
       </div>
@@ -172,6 +204,29 @@ var app = new Vue({
     hljs.initHighlightingOnLoad()
   </script>
 
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dfc257046874e4461f6f',
+        clientSecret: '06869916f1bbc829b79ebaeefdbf1ceda8570a80',
+        repo: 'blog',
+        owner: '516wjy',
+        admin: ['516wjy'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 

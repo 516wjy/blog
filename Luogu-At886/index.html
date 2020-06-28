@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>5+1Wjy Blog</title>
+<title>洛谷 At886 题解 | 5+1Wjy Blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -12,16 +12,26 @@
 <link rel="stylesheet" href="https://516wjy.github.io/blog/styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
-    <meta name="description" content="">
-    
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    
+    <meta name="description" content="题意
+题目
+stove，他是一个矿工，他现在有7天挖矿时间
+然后他有两个地方可以挖矿，沙漠的矿山和平原的矿山
+第一行，输入7个数代表再第i天如果在沙漠的矿山拿到的工资
+第二行，输入7个数代表再第i天如果在平原的矿山拿到的工资
+问stove最..." />
+    <meta name="keywords" content="洛谷" />
   </head>
   <body>
     <div id="app" class="main">
@@ -103,57 +113,12 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Archlinux-Qv2ray/">
-                  <h2 class="post-title">Archlinux QV2ray 实现科学上网</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-27
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-                <a class="right" href="https://516wjy.github.io/blog/Archlinux-Qv2ray/">
-                  <div class="feature-container" style="background-image: url('https://516wjy.github.io/blog/post-images/Archlinux-Qv2ray.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Install-Archlinux/">
-                  <h2 class="post-title">安装 Archlinux</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-                <a class="right" href="https://516wjy.github.io/blog/Install-Archlinux/">
-                  <div class="feature-container" style="background-image: url('https://516wjy.github.io/blog/post-images/Install-Archlinux.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Luogu-At886/">
-                  <h2 class="post-title">洛谷 At886 题解</h2>
-                </a>
-                <div class="post-date">
-                  2020-05-12
-                </div>
-                <div class="post-abstract">
-                  <h1 id="题意">题意</h1>
+          <div class="post-detail">
+            <h2 class="post-title">洛谷 At886 题解</h2>
+            <div class="post-date">2020-05-12</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="题意">题意</h1>
 <h3 id="题目">题目</h3>
 <p><strong>stove，他是一个矿工，他现在有7天挖矿时间</strong></p>
 <p><strong>然后他有两个地方可以挖矿，沙漠的矿山和平原的矿山</strong></p>
@@ -172,79 +137,88 @@
 <h1 id="实际操作">实际操作</h1>
 <p>思路是不错的，可是脑子不够快！可能是当时有点仓促，结果 WA 咧！</p>
 <p>面对 WA 最有效的方法就是重写一遍！</p>
+<!-- more -->
+<p>就这样，我又写了一遍……</p>
+<p>AC了！</p>
+<h3 id="预处理">预处理</h3>
+<p>a是存储1号矿井的工资的，b是存储2号矿井的工资，sum是累加的总工资</p>
+<pre><code class="language-cpp">int a[8],b[8],sum=0;
+</code></pre>
+<h3 id="输入处理">输入处理</h3>
+<pre><code class="language-cpp">for(int i=1;i&lt;8;i++){
+    cin&gt;&gt;a[i];
+}
+for(int i=1;i&lt;8;i++){
+    cin&gt;&gt;b[i];
+}
+</code></pre>
+<h3 id="计算最大工资">计算最大工资</h3>
+<p>求每天的1号矿井的工资与二号矿井的工资的最大值</p>
+<pre><code class="language-cpp">for(int i=1;i&lt;8;i++){
+    sum+=max(a[i],b[i]);
+}
+</code></pre>
+<h3 id="提示">提示</h3>
+<p>比大小函数最好自己写。</p>
+<pre><code class="language-cpp">#define max(a,b) (((a)&gt;(b))?(a):(b))
+</code></pre>
+<p>不完全等价于</p>
+<pre><code class="language-cpp">int max(int a,int b){
+    return a&gt;b?a:b;
+}
+</code></pre>
+<p>define的可以支持所有类型的数；<br>
+max只能是单一类型，并且define比max速度快！</p>
+<h3 id="完整代码">完整代码</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+using namespace std;
+#define max(a,b) (((a)&gt;(b))?(a):(b))
+int a[8],b[8],sum=0;
+int main(){
+    for(int i=1;i&lt;8;i++){
+        cin&gt;&gt;a[i];
+    }
+    for(int i=1;i&lt;8;i++){
+        cin&gt;&gt;b[i];
+    }
+    for(int i=1;i&lt;8;i++){
+        sum+=max(a[i],b[i]);
+    }
+    cout&lt;&lt;sum&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
 
-                </div>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://516wjy.github.io/blog/Luogu/" class="tag">
+                    洛谷
+                  </a>
+                
               </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
                 <a href="https://516wjy.github.io/blog/Luogu-P5658/">
-                  <h2 class="post-title">洛谷 P5658 题解</h2>
+                  <h3 class="post-title">
+                    洛谷 P5658 题解
+                  </h3>
                 </a>
-                <div class="post-date">
-                  2020-03-30
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
               </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Luogu-At163/">
-                  <h2 class="post-title">洛谷 At163 题解</h2>
-                </a>
-                <div class="post-date">
-                  2020-03-24
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Luogu-UVA10820/">
-                  <h2 class="post-title">洛谷 UVA10820 题解</h2>
-                </a>
-                <div class="post-date">
-                  2020-03-20
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://516wjy.github.io/blog/Luogu-P5104/">
-                  <h2 class="post-title">洛谷 P5104 题解</h2>
-                </a>
-                <div class="post-date">
-                  2020-03-19
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+            
 
-          <div class="pagination-container">
-  
-  
-    <a href="https://516wjy.github.io/blog/page/2" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
-  
-</div>
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
 
         </div>
       </div>
@@ -270,6 +244,29 @@ var app = new Vue({
     hljs.initHighlightingOnLoad()
   </script>
 
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'dfc257046874e4461f6f',
+        clientSecret: '06869916f1bbc829b79ebaeefdbf1ceda8570a80',
+        repo: 'blog',
+        owner: '516wjy',
+        admin: ['516wjy'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
